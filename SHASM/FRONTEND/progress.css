@@ -1,0 +1,117 @@
+/* Import Google Fonts for a modern look */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Fira+Code:wght@400;500&display=swap');
+
+/* --- Base Styles & Variables --- */
+:root {
+  --primary-color: #00aaff; /* Electric Blue */
+  --background-color: #0d1117; /* Dark Charcoal (like GitHub dark mode) */
+  --container-bg: #161b22; /* Slightly lighter dark */
+  --text-color: #c9d1d9; /* Light Gray */
+  --text-secondary: #8b949e; /* Dimmer Gray */
+  --progress-track-bg: #21262d; /* Darker track for progress bar */
+  --button-hover-bg: #00bfff;
+  --success-color: #3fb950;
+  --error-color: #f85149;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* --- Centering Layout --- */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* --- Main Content Container --- */
+.container {
+  max-width: 600px; /* Slightly wider for the progress bar */
+  width: 100%;
+  text-align: center;
+  background-color: var(--container-bg);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--progress-track-bg); /* Use a darker border */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-shadow: 0 0 8px rgba(0, 170, 255, 0.4);
+  margin-bottom: 2rem;
+}
+
+/* --- Status Display --- */
+#status {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  font-family: 'Fira Code', monospace; /* Techy font for status */
+  min-height: 1.5em; /* Prevent layout shift if content changes */
+}
+
+/* --- Progress Bar --- */
+#progressBar {
+  width: 100%;
+  height: 25px; /* Height of the progress bar */
+  background-color: var(--progress-track-bg);
+  border-radius: 12px;
+  overflow: hidden; /* Ensures the bar inside stays within bounds */
+  border: 1px solid var(--primary-color); /* A subtle border around the track */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+}
+
+#bar {
+  height: 100%;
+  width: 0%; /* Will be controlled by JavaScript */
+  background-color: var(--primary-color);
+  border-radius: 12px; /* Match outer container's radius */
+  transition: width 0.4s ease-out; /* Smooth transition for progress updates */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--background-color); /* Text color inside the bar */
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+}
+
+/* Optional: Add a subtle animation/glow for the active bar when not 100% */
+#bar.active {
+    animation: pulseGlow 1.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { box-shadow: 0 0 5px var(--primary-color); }
+    to { box-shadow: 0 0 15px var(--primary-color); }
+}
+
+/* --- Additional Messages (Optional, if you add results later) --- */
+#message {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  min-height: 20px;
+}
+
+.message-success {
+  color: var(--success-color);
+}
+
+.message-error {
+  color: var(--error-color);
+}

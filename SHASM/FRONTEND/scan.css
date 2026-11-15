@@ -1,0 +1,150 @@
+/* Import Google Fonts for a modern look */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Fira+Code:wght@400;500&display=swap');
+
+/* --- Base Styles & Variables --- */
+:root {
+  --primary-color: #00aaff; /* Electric Blue */
+  --background-color: #0d1117; /* Dark Charcoal (like GitHub dark mode) */
+  --container-bg: #161b22; /* Slightly lighter dark */
+  --text-color: #c9d1d9; /* Light Gray */
+  --text-secondary: #8b949e; /* Dimmer Gray */
+  --input-border: #21262d;
+  --button-hover-bg: #00bfff;
+  --success-color: #3fb950;
+  --error-color: #f85149;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* --- Centering Layout --- */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* --- Main Content Container --- */
+.container {
+  max-width: 500px; /* Slightly narrower for forms */
+  width: 100%;
+  text-align: center; /* Center the form elements */
+}
+
+h1 {
+  font-size: 2.5rem; /* Slightly smaller for internal pages */
+  font-weight: 700;
+  color: var(--primary-color);
+  text-shadow: 0 0 8px rgba(0, 170, 255, 0.4); /* Glow effect */
+  margin-bottom: 2rem;
+}
+
+/* --- Form Styling --- */
+#scanForm {
+  background-color: var(--container-bg);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Spacing between form groups */
+}
+
+#scanForm label {
+  display: block; /* Each label on its own line */
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+#scanForm input[type="url"],
+#scanForm input[type="number"],
+#scanForm select {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  background-color: var(--background-color);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--text-color);
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  appearance: none; /* Removes default select arrow for custom styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Custom dropdown arrow for select */
+#scanForm select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2300aaff' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  padding-right: 35px; /* Make space for the arrow */
+}
+
+
+#scanForm input::placeholder {
+  color: var(--text-secondary);
+}
+
+#scanForm input:focus,
+#scanForm select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px rgba(0, 170, 255, 0.4);
+}
+
+#scanForm button[type="submit"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 1rem; /* Space above button */
+}
+
+#scanForm button[type="submit"]:hover {
+  background-color: var(--button-hover-bg);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+}
+
+/* --- Message Area --- */
+#message {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  min-height: 20px; /* To prevent layout shift */
+}
+
+/* Specific styles for success/error messages (can be added via JS) */
+.message-success {
+  color: var(--success-color);
+}
+
+.message-error {
+  color: var(--error-color);
+}
